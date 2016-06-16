@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>jrp</title>
+    <title>videochat</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -97,11 +97,11 @@ function login(form) {
         form.username.style.background="#55ff5b"; 
         form.login_submit.hidden="true"; 
         $('#callForm').show();
+        $('#inCall').show();
         ctrl.addLocalStream(vid_thumb);
         addLog("Logged in as " + form.username.value); 
     });
     ctrl.receive(function(session){
-        $('#inCall').show();
         session.connected(function(session){ video_out.appendChild(session.video); addLog(session.number + " has joined."); vidCount++; });
         session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); addLog(session.number + " has left.");    vidCount--;});
     });
@@ -122,7 +122,7 @@ function makeCall(form){
     if (phone.number() == num) return false; // No calling yourself!
     ctrl.isOnline(num, function(isOn){
         if (isOn) ctrl.dial(num);
-        else alert("User if Offline");
+        else alert("User is Offline!");
     });
     return false;
 }
