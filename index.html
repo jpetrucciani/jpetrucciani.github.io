@@ -47,7 +47,7 @@
     </form>
 
     
-    <form name="callForm" id="call" action="#" onsubmit="return errWrap(makeCall,this);">
+    <form name="callForm" id="call" style="display:none;" action="#" onsubmit="return errWrap(makeCall,this);">
         <span class="input input--nao">
             <input class="input__field input__field--nao" type="text" name="number" id="call" placeholder="Enter User To Call!"/>
                     <label class="input__label input__label--nao" for="number">
@@ -63,7 +63,7 @@
         </button>
     </form>
     
-    <div id="inCall" class="ptext">
+    <div id="inCall" style="display:none;" class="ptext">
         <button id="end" onclick="end()" >End</button>
         <button id="mute" onclick="mute()">Mute</button> 
         <button id="pause" onclick="pause()">Pause</button>
@@ -96,7 +96,7 @@ function login(form) {
     ctrl.ready(function(){
         form.username.style.background="#55ff5b"; 
         form.login_submit.hidden="true"; 
-        $('#callForm').show();
+        $('#call').show();
         $('#inCall').show();
         ctrl.addLocalStream(vid_thumb);
         addLog("Logged in as " + form.username.value); 
@@ -161,7 +161,7 @@ function errWrap(fxn, form){
 }
 $( document ).ready(function() {
     $('#inCall').hide();
-    $('#callForm').hide();
+    $('#call').hide();
 });
 </script>
 
